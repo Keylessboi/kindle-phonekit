@@ -70,8 +70,7 @@ All claims below were checked against `README.md`, `menu.json`,
   deleting the folder. — `README.md`
 - Default LLM model is `qwen2.5:7b-instruct`; the default URL points at
   Ollama on the device itself. — `llm/config.env`
-- Version `1.0.0`; extension author field in `config.xml` is the placeholder
-  `You`. — `config.xml`
+- Version `1.0.0`; extension author field in `config.xml` is `keylessboi`. — `config.xml`
 
 ### Inference (not directly proven by the repo)
 - "Calm / low-distraction / focused" reads as the product's intended spirit

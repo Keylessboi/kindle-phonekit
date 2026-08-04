@@ -41,8 +41,8 @@ violates a rule below, change it.
 - Version `1.0.0`, repository fresh this week. Use "self-contained",
   "focused toolset", "zero dependencies" (all verified) — never "battle
   tested", "production-grade", or "enterprise".
-- The `config.xml` author field is the placeholder `You`; the campaign does
-  not brand its author.
+- The `config.xml` author field is `keylessboi`; the campaign does not brand
+  another author.
 
 ## Tone
 
