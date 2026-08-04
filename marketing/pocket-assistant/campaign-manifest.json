@@ -1,0 +1,67 @@
+{
+  "name": "PhoneKit Pocket Assistant",
+  "campaign_slug": "pocket-assistant",
+  "thesis": "Your calm Kindle can also be useful.",
+  "art_direction": "2 - Everyday companion / warm human. A lived-in evening scene, warm reading light, an e-ink reader in hand. Editorial vector illustration, not a photograph or a product screenshot.",
+  "claims_reviewed": true,
+  "assets": [
+    {
+      "path": "assets/hero-landscape.png",
+      "role": "website-hero",
+      "width": 1600,
+      "height": 900,
+      "format": "PNG",
+      "master": "artwork/hero-landscape.svg"
+    },
+    {
+      "path": "assets/feed-portrait.png",
+      "role": "social-feed",
+      "width": 1080,
+      "height": 1350,
+      "format": "PNG",
+      "master": "artwork/feed-portrait.svg"
+    },
+    {
+      "path": "assets/story-cover.png",
+      "role": "story-reel-cover",
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG",
+      "master": "artwork/story-cover.svg"
+    },
+    {
+      "path": "assets/readme-banner.png",
+      "role": "readme-banner",
+      "width": 1600,
+      "height": 400,
+      "format": "PNG",
+      "master": "artwork/readme-banner.svg"
+    },
+    {
+      "path": "artwork/hero-landscape.svg",
+      "role": "editable-master",
+      "format": "SVG"
+    },
+    {
+      "path": "artwork/feed-portrait.svg",
+      "role": "editable-master",
+      "format": "SVG"
+    },
+    {
+      "path": "artwork/story-cover.svg",
+      "role": "editable-master",
+      "format": "SVG"
+    },
+    {
+      "path": "artwork/readme-banner.svg",
+      "role": "editable-master",
+      "format": "SVG"
+    }
+  ],
+  "channels": [
+    "website",
+    "README",
+    "launch-post",
+    "social"
+  ]
+}

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24262e"/>
+      <stop offset="0.5" stop-color="#3a322c"/>
+      <stop offset="1" stop-color="#171512"/>
+    </linearGradient>
+    <radialGradient id="lampglow" cx="0.6" cy="0.22" r="0.85">
+      <stop offset="0" stop-color="#e8a95b" stop-opacity="0.5"/>
+      <stop offset="0.5" stop-color="#e8a95b" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#e8a95b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5f2ec"/>
+      <stop offset="1" stop-color="#e8e2d6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#dusk)"/>
+  <rect width="1080" height="1350" fill="url(#lampglow)"/>
+
+  <!-- Window dusk strip, top-right corner (clear of the centered title,
+       which reaches ~x=828 at 72px, and above the subtitle row at y=300) -->
+  <rect x="880" y="0" width="200" height="270" fill="#10121a" opacity="0.55"/>
+  <rect x="905" y="35" width="75" height="110" fill="#2b3a52" opacity="0.8"/>
+  <rect x="990" y="35" width="75" height="110" fill="#25344a" opacity="0.8"/>
+  <rect x="905" y="155" width="75" height="105" fill="#223047" opacity="0.8"/>
+  <rect x="990" y="155" width="75" height="105" fill="#1c2940" opacity="0.8"/>
+  <rect x="982" y="35" width="5" height="225" fill="#0f1117"/>
+  <rect x="905" y="150" width="160" height="5" fill="#0f1117"/>
+
+  <!-- Desk surface bottom -->
+  <rect x="0" y="1060" width="1080" height="290" fill="#49392d"/>
+  <rect x="0" y="1060" width="1080" height="10" fill="#5a4938"/>
+
+  <!-- E-ink reader device, centered lower -->
+  <g transform="translate(540,760) rotate(-4)">
+    <rect x="-180" y="-220" width="360" height="520" rx="26" fill="#d9d2c4"/>
+    <rect x="-172" y="-212" width="344" height="504" rx="22" fill="url(#screen)"/>
+    <g fill="#9aa0a6">
+      <rect x="-148" y="-186" width="296" height="10" rx="5" opacity="0.95"/>
+      <rect x="-148" y="-166" width="200" height="8" rx="4" opacity="0.55"/>
+      <rect x="-148" y="-118" width="296" height="12" rx="5" opacity="0.85"/>
+      <rect x="-148" y="-98" width="226" height="8" rx="4" opacity="0.5"/>
+      <rect x="-148" y="-50" width="296" height="12" rx="5" opacity="0.85"/>
+      <rect x="-148" y="-30" width="170" height="8" rx="4" opacity="0.5"/>
+      <rect x="-148" y="18" width="296" height="12" rx="5" opacity="0.85"/>
+      <rect x="-148" y="38" width="130" height="8" rx="4" opacity="0.5"/>
+    </g>
+    <rect x="-172" y="-120" width="110" height="300" fill="#e8a95b" opacity="0.10" rx="22"/>
+    <rect x="-172" y="-212" width="344" height="12" fill="#c9c1b0" rx="6"/>
+  </g>
+
+  <!-- Relaxed hand beneath device, lower -->
+  <ellipse cx="620" cy="1030" rx="160" ry="60" fill="#cfa879" opacity="0.9"/>
+  <ellipse cx="560" cy="1000" rx="110" ry="60" fill="#bd9a70" opacity="0.85"/>
+  <ellipse cx="640" cy="980" rx="120" ry="50" fill="#cfa879" opacity="0.6"/>
+
+  <!-- Warm lamp above-right of device -->
+  <g transform="translate(760,540)">
+    <path d="M-13,0 L13,0 L28,112 L-28,112 Z" fill="#7a4d22"/>
+    <rect x="-28" y="138" width="56" height="13" rx="4" fill="#5b3a1c"/>
+    <ellipse cx="0" cy="120" rx="56" ry="32" fill="#ffd691" opacity="0.9"/>
+    <rect x="0" y="-6" width="8" height="58" fill="#8a5c2a"/>
+  </g>
+
+  <!-- Tagline, wide band top -->
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="540" y="120" font-size="72" fill="#f2efe9" letter-spacing="1">Your calm Kindle</text>
+    <text x="540" y="200" font-size="72" fill="#f2efe9" letter-spacing="1">can also be <tspan fill="#e8a95b" font-style="italic">useful.</tspan></text>
+    <text x="540" y="300" font-size="36" fill="#c7c1b4">Clock · Timer · On-screen chat · XMPP messenger</text>
+  </g>
+</svg>

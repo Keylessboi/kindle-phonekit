@@ -1,0 +1,133 @@
+{
+    "items": [
+        {
+            "name": "Clock",
+            "priority": 1,
+            "action": "./ext/clock.sh",
+            "exitmenu": false,
+            "refresh": false,
+            "status": false
+        },
+        {
+            "name": "Timer (5 min)",
+            "priority": 2,
+            "action": "./ext/timer.sh",
+            "params": "300",
+            "exitmenu": false,
+            "refresh": false,
+            "status": false
+        },
+        {
+            "name": "LLM Chat",
+            "priority": 3,
+            "items": [
+                {
+                    "name": "Start Chat",
+                    "priority": 1,
+                    "action": "./ext/llm/start.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Stop Server",
+                    "priority": 2,
+                    "action": "./ext/llm/stop.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "XMPP",
+            "priority": 4,
+            "items": [
+                {
+                    "name": "Open Cheogram WWW",
+                    "priority": 1,
+                    "action": "./ext/xmpp/open.sh",
+                    "params": "https://app.cheogram.com",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Open Monocles Web",
+                    "priority": 2,
+                    "action": "./ext/xmpp/open.sh",
+                    "params": "https://chat.monocles.de",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Bridge: Start (on-screen alerts)",
+                    "priority": 3,
+                    "action": "./ext/xmpp/start_bridge.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Bridge: Stop",
+                    "priority": 4,
+                    "action": "./ext/xmpp/stop_bridge.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "AI Web Apps (aihub-style)",
+            "priority": 5,
+            "items": [
+                {
+                    "name": "Open WebUI (edit weblinks.sh)",
+                    "priority": 1,
+                    "action": "./ext/weblinks.sh",
+                    "params": "openwebui",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "ChatGPT",
+                    "priority": 2,
+                    "action": "./ext/weblinks.sh",
+                    "params": "chatgpt",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Claude",
+                    "priority": 3,
+                    "action": "./ext/weblinks.sh",
+                    "params": "claude",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Gemini",
+                    "priority": 4,
+                    "action": "./ext/weblinks.sh",
+                    "params": "gemini",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "About",
+            "priority": 99,
+            "action": "./ext/about.sh",
+            "exitmenu": false,
+            "refresh": false,
+            "status": false
+        }
+    ]
+}

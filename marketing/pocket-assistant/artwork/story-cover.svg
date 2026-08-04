@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24262e"/>
+      <stop offset="0.5" stop-color="#3a322c"/>
+      <stop offset="1" stop-color="#15130f"/>
+    </linearGradient>
+    <radialGradient id="lampglow" cx="0.5" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#e8a95b" stop-opacity="0.5"/>
+      <stop offset="0.55" stop-color="#e8a95b" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#e8a95b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5f2ec"/>
+      <stop offset="1" stop-color="#e8e2d6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#dusk)"/>
+  <rect width="1080" height="1920" fill="url(#lampglow)"/>
+
+  <!-- Tall window strip, upper portion -->
+  <rect x="120" y="0" width="840" height="820" fill="#10121a" opacity="0.4"/>
+  <rect x="150" y="50" width="250" height="330" fill="#2b3a52" opacity="0.75"/>
+  <rect x="420" y="50" width="250" height="330" fill="#25344a" opacity="0.75"/>
+  <rect x="690" y="50" width="250" height="330" fill="#26354b" opacity="0.75"/>
+  <rect x="150" y="400" width="250" height="330" fill="#223047" opacity="0.75"/>
+  <rect x="420" y="400" width="250" height="330" fill="#1d2a3f" opacity="0.75"/>
+  <rect x="690" y="400" width="250" height="330" fill="#1c2940" opacity="0.75"/>
+  <rect x="403" y="50" width="5" height="680" fill="#0f1117"/>
+  <rect x="673" y="50" width="5" height="680" fill="#0f1117"/>
+  <rect x="150" y="373" width="790" height="5" fill="#0f1117"/>
+
+  <!-- Desk surface, lower -->
+  <rect x="0" y="1520" width="1080" height="400" fill="#49392d"/>
+  <rect x="0" y="1520" width="1080" height="12" fill="#5a4938"/>
+
+  <!-- E-ink reader device, centered lower -->
+  <g transform="translate(540,1160) rotate(-3)">
+    <rect x="-195" y="-240" width="390" height="580" rx="28" fill="#d9d2c4"/>
+    <rect x="-186" y="-231" width="372" height="562" rx="24" fill="url(#screen)"/>
+    <g fill="#9aa0a6">
+      <rect x="-160" y="-202" width="320" height="11" rx="5" opacity="0.95"/>
+      <rect x="-160" y="-181" width="215" height="8" rx="4" opacity="0.55"/>
+      <rect x="-160" y="-126" width="320" height="13" rx="5" opacity="0.85"/>
+      <rect x="-160" y="-105" width="245" height="8" rx="4" opacity="0.5"/>
+      <rect x="-160" y="-50" width="320" height="13" rx="5" opacity="0.85"/>
+      <rect x="-160" y="-29" width="180" height="8" rx="4" opacity="0.5"/>
+      <rect x="-160" y="26" width="320" height="13" rx="5" opacity="0.85"/>
+      <rect x="-160" y="47" width="140" height="8" rx="4" opacity="0.5"/>
+    </g>
+    <rect x="-186" y="-130" width="120" height="320" fill="#e8a95b" opacity="0.10" rx="24"/>
+    <rect x="-186" y="-231" width="372" height="13" fill="#c9c1b0" rx="7"/>
+  </g>
+
+  <!-- Relaxed hand beneath, lower -->
+  <ellipse cx="620" cy="1470" rx="175" ry="70" fill="#cfa879" opacity="0.9"/>
+  <ellipse cx="545" cy="1420" rx="120" ry="65" fill="#bd9a70" opacity="0.85"/>
+  <ellipse cx="650" cy="1395" rx="130" ry="55" fill="#cfa879" opacity="0.6"/>
+
+  <!-- Warm lamp, upper right -->
+  <g transform="translate(820,820)">
+    <path d="M-14,0 L14,0 L30,130 L-30,130 Z" fill="#7a4d22"/>
+    <rect x="-30" y="160" width="60" height="15" rx="4" fill="#5b3a1c"/>
+    <ellipse cx="0" cy="138" rx="62" ry="36" fill="#ffd691" opacity="0.9"/>
+    <rect x="0" y="-6" width="8" height="60" fill="#8a5c2a"/>
+  </g>
+
+  <!-- Tagline, vertically centered band with thumb-safe margins.
+       A dark rounded plate behind the text keeps cream copy legible against
+       the e-ink screen that sits directly beneath it (device at y=920..1500),
+       while keeping the device visible around the plate. -->
+  <rect x="70" y="1100" width="940" height="360" rx="28" fill="#171512" opacity="0.88"/>
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="540" y="1195" font-size="76" fill="#f2efe9" letter-spacing="1">Your calm Kindle</text>
+    <text x="540" y="1295" font-size="76" fill="#f2efe9" letter-spacing="1">can also be <tspan fill="#e8a95b" font-style="italic">useful.</tspan></text>
+    <text x="540" y="1415" font-size="38" fill="#c7c1b4">Clock · Timer · On-screen chat · XMPP messenger</text>
+  </g>
+</svg>
