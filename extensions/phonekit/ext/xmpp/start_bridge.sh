@@ -13,7 +13,7 @@ _PY=$(find_python3) || {
 if [ -f "$_DIR/config.env" ]; then
     . "$_DIR/config.env"
 fi
-export PK_XMPP_JID PK_XMPP_PASS PK_XMPP_HOST PK_XMPP_PORT PK_XMPP_NO_VERIFY PK_XMPP_POPUP PK_XMPP_DEBUG PK_XMPP_INBOX
+export PK_XMPP_JID PK_XMPP_PASS PK_XMPP_HOST PK_XMPP_PORT PK_XMPP_NO_VERIFY PK_XMPP_POPUP PK_XMPP_DEBUG PK_XMPP_INBOX PK_XMPP_CHECKIN_JID
 
 if [ -z "$PK_XMPP_JID" ] || [ -z "$PK_XMPP_PASS" ]; then
     eips_center 20 "Set PK_XMPP_JID/PASS first"
