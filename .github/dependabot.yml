@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+  # Python tooling is kept deliberately minimal (stdlib + pytest). If a
+  # requirements.txt or uv/pyproject appears, add a pip/uv entry here. Kept
+  # commented on purpose so dependabot stays honest about the zero-dependency
+  # promise.
+  # - package-ecosystem: "pip"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"

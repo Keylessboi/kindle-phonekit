@@ -1,0 +1,95 @@
+name: CI
+
+# Runs the full PhoneKit test suite on every push and pull request, across the
+# Python versions the on-device/desktop tooling targets. The suite is stdlib +
+# pytest only, so a matrix of Python versions is cheap and catches version-drift
+# regressions (the XMPP reader is sensitive to 3.14 socket semantics).
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: pytest (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: Install pytest
+        run: python -m pip install --upgrade pip pytest
+
+      - name: Run test suite
+        run: python -m pytest tests/ -v
+
+  static:
+    name: static checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile all Python sources
+        run: |
+          set -e
+          find extensions -name '*.py' -print0 | xargs -0 -n1 python -m py_compile
+          echo "All Python sources compile."
+
+      - name: Shell syntax check (POSIX sh)
+        run: |
+          set -e
+          fail=0
+          while IFS= read -r f; do
+            sh -n "$f" || { echo "FAIL: $f"; fail=1; }
+          done < <(find extensions -name '*.sh' -o -name 'open.sh')
+          exit $fail
+
+      - name: Shellcheck (if present)
+        run: |
+          if command -v shellcheck >/dev/null 2>&1; then
+            find extensions -name '*.sh' -print0 | xargs -0 shellcheck
+          else
+            echo "shellcheck not installed; skipping (sh -n already covers syntax)."
+          fi
+
+      - name: Config sanity (menu.json, config.xml, config.env)
+        run: |
+          python - <<'PY'
+          import json, os, xml.etree.ElementTree as ET
+          base = "extensions/phonekit"
+          json.load(open(os.path.join(base, "menu.json")))
+          ET.parse(os.path.join(base, "config.xml"))
+          for root, _dirs, files in os.walk(os.path.join(base, "ext")):
+              if "config.env" in files:
+                  for line in open(os.path.join(root, "config.env")):
+                      line = line.strip()
+                      if line and not line.startswith("#") and "=" not in line:
+                          raise SystemExit("bad config.env line: %s" % line)
+          print("config.json/config.xml/config.env OK")
+          PY
+
+  test-report:
+    name: Build test summary
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: always() && github.event_name == 'pull_request'
+    steps:
+      - name: Summarize matrix result
+        run: |
+          echo "### Test matrix" >> "$GITHUB_STEP_SUMMARY"
+          echo "Python 3.9-3.14 across ubuntu-latest." >> "$GITHUB_STEP_SUMMARY"
+          echo "See the matrix job statuses above." >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,58 @@
+name: Bug report
+description: Something in PhoneKit isn't working as documented.
+title: "[bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Fill in what you can; "I don't know" is a fine
+        answer for any field.
+  - type: text
+    attributes:
+      label: What did you do?
+      description: The exact menu entry or command you ran.
+    validations:
+      required: true
+  - type: text
+    attributes:
+      label: What happened?
+      description: Error text, screen output, or behavior you saw. Paste log lines from /tmp/phonekit_*.log if any.
+    validations:
+      required: true
+  - type: text
+    attributes:
+      label: What did you expect?
+  - type: dropdown
+    attributes:
+      label: Device / firmware
+      options:
+        - Kindle Basic
+        - Kindle Paperwhite
+        - Kindle Oasis
+        - Kindle Scribe
+        - Other / unknown
+    validations:
+      required: false
+  - type: dropdown
+    attributes:
+      label: Where does the issue live?
+      options:
+        - Clock
+        - Timer
+        - LLM chat
+        - XMPP bridge / check-in
+        - Reader (read-it-later)
+        - RSS feeds
+        - Notes & Todo
+        - Dashboard
+        - QR pairing
+        - Menu / install
+        - Other
+      multiple: true
+  - type: textarea
+    attributes:
+      label: Logs or context
+      description: Paste any relevant output. On the device, /tmp/phonekit_llm.log, /tmp/phonekit_feed.log, /tmp/phonekit_xmpp.log, etc. Helpful but optional.
+    validations:
+      required: false
