@@ -1,0 +1,4 @@
+# PhoneKit Feed Reader - feed list. One URL per line. Lines starting with # are ignored.
+https://news.ycombinator.com/rss
+https://feeds.bbci.co.uk/news/rss.xml
+https://www.theverge.com/rss/index.xml
