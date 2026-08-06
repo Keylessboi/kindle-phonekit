@@ -9,13 +9,46 @@
             "status": false
         },
         {
-            "name": "Timer (5 min)",
+            "name": "Timer",
             "priority": 2,
-            "action": "./ext/timer.sh",
-            "params": "300",
-            "exitmenu": false,
-            "refresh": false,
-            "status": false
+            "items": [
+                {
+                    "name": "5 min (default)",
+                    "priority": 1,
+                    "action": "./ext/timer.sh",
+                    "params": "300",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "15 min",
+                    "priority": 2,
+                    "action": "./ext/timer.sh",
+                    "params": "900",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "25 min (pomodoro)",
+                    "priority": 3,
+                    "action": "./ext/timer.sh",
+                    "params": "1500",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "45 min",
+                    "priority": 4,
+                    "action": "./ext/timer.sh",
+                    "params": "2700",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
         },
         {
             "name": "LLM Chat",
@@ -115,6 +148,160 @@
                     "priority": 4,
                     "action": "./ext/weblinks.sh",
                     "params": "gemini",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "Reader",
+            "priority": 6,
+            "items": [
+                {
+                    "name": "Start Reader",
+                    "priority": 1,
+                    "action": "./ext/reader/start.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Stop Server",
+                    "priority": 2,
+                    "action": "./ext/reader/stop.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "RSS Feeds",
+            "priority": 7,
+            "items": [
+                {
+                    "name": "Start Feeds",
+                    "priority": 1,
+                    "action": "./ext/feed/start.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Stop Server",
+                    "priority": 2,
+                    "action": "./ext/feed/stop.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "Notes & Todo",
+            "priority": 8,
+            "items": [
+                {
+                    "name": "Start Notes",
+                    "priority": 1,
+                    "action": "./ext/notes/start.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Stop Server",
+                    "priority": 2,
+                    "action": "./ext/notes/stop.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "priority": 9,
+            "items": [
+                {
+                    "name": "Start Dashboard",
+                    "priority": 1,
+                    "action": "./ext/dashboard/start.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Stop Server",
+                    "priority": 2,
+                    "action": "./ext/dashboard/stop.sh",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "QR Pairing",
+            "priority": 10,
+            "items": [
+                {
+                    "name": "Show Join WiFi (edit config)",
+                    "priority": 1,
+                    "action": "./ext/qr/show_qr.sh",
+                    "params": "WIFI:T:WPA;S:HouseGuest;P:changeme;;",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Show Contact vCard",
+                    "priority": 2,
+                    "action": "./ext/qr/show_qr.sh",
+                    "params": "MECARD:N:Name;TEL:+15551234567;EMAIL:name@example.com;;",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "name": "XMPP Check-in",
+            "priority": 11,
+            "items": [
+                {
+                    "name": "Here",
+                    "priority": 1,
+                    "action": "./ext/xmpp/checkin.sh",
+                    "params": "here",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Busy",
+                    "priority": 2,
+                    "action": "./ext/xmpp/checkin.sh",
+                    "params": "busy",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Ok",
+                    "priority": 3,
+                    "action": "./ext/xmpp/checkin.sh",
+                    "params": "ok",
+                    "exitmenu": false,
+                    "refresh": false,
+                    "status": false
+                },
+                {
+                    "name": "Night",
+                    "priority": 4,
+                    "action": "./ext/xmpp/checkin.sh",
+                    "params": "night",
                     "exitmenu": false,
                     "refresh": false,
                     "status": false

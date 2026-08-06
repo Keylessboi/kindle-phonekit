@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Every PhoneKit feature in detail: clock, countdown timer, LLM chat, XMPP messenger, read-it-later reader, RSS feeds, notes and todo, home-lab dashboard, and QR pairing.">
+<title>Features — PhoneKit</title>
+<style>
+  :root{
+    --bg:#14130f;
+    --bg-2:#1b1914;
+    --surface:#211e17;
+    --surface-2:#2a261d;
+    --border:#3a342a;
+    --ink:#f5f2ec;
+    --ink-soft:#e8e2d6;
+    --muted:#b3ac9d;
+    --muted-2:#8d8678;
+    --amber:#e8a95b;
+    --amber-bright:#ffd691;
+    --amber-deep:#c98a3d;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --maxw:1120px;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:var(--amber-bright);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(20,19,15,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);letter-spacing:.02em}
+  .brand:hover{text-decoration:none}
+  .brand-mark{width:30px;height:30px;border-radius:8px;flex:none;background:linear-gradient(135deg,var(--amber-bright),var(--amber-deep));display:grid;place-items:center;color:#1a150c;font-weight:800;font-size:15px}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{color:var(--muted);font-size:15px}
+  .nav-links a:hover{color:var(--ink);text-decoration:none}
+  .nav-cta{background:var(--amber);color:#241a0c;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.9rem}
+  .nav-cta:hover{background:var(--amber-bright);text-decoration:none}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
+
+  .page-head{padding:72px 0 40px;border-bottom:1px solid var(--border);background:var(--bg-2)}
+  .crumb{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+  .page-head h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.5vw,3rem);line-height:1.1;margin-bottom:14px}
+  .page-head p{color:var(--muted);max-width:64ch;font-size:1.05rem}
+
+  .feature{padding:64px 0;border-bottom:1px solid var(--border)}
+  .feature:nth-child(even){background:var(--bg-2)}
+  .feature-inner{display:grid;grid-template-columns:1fr;gap:8px}
+  .feature h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3vw,2rem);margin-bottom:10px}
+  .feature .lead{color:var(--ink-soft);font-size:1.1rem;max-width:70ch;margin-bottom:18px}
+  .feature p.body{color:var(--muted);max-width:72ch;margin-bottom:16px}
+  .feature ul{list-style:none;margin:0 0 8px;display:grid;gap:10px}
+  .feature li{color:var(--muted);padding-left:26px;position:relative;max-width:72ch}
+  .feature li::before{content:"";position:absolute;left:4px;top:.62em;width:9px;height:9px;border-radius:2px;background:var(--amber)}
+  .feature li strong{color:var(--ink)}
+  .feature .note{margin-top:18px;padding:14px 18px;border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;background:var(--surface);color:var(--muted);font-size:.95rem;max-width:72ch}
+  .feature .note strong{color:var(--amber-bright)}
+  .feature code{color:var(--amber-bright);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;word-break:break-all}
+
+  .back{display:inline-block;margin-top:8px;font-weight:600}
+
+  footer{border-top:1px solid var(--border);padding:40px 0;background:var(--bg-2)}
+  .foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;color:var(--muted-2);font-size:.88rem}
+
+  @media(max-width:760px){
+    .nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;background:var(--bg);border-bottom:1px solid var(--border);padding:16px 24px;gap:16px;display:none}
+    .nav-links.open{display:flex}
+    .nav-toggle{display:block}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner wrap" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+    <a class="brand" href="index.html"><span class="brand-mark">P</span><span>PhoneKit</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#install">Install</a>
+      <a class="nav-cta" href="index.html#install">Get PhoneKit</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+    <div class="crumb">PhoneKit &mdash; Feature details</div>
+    <h1>Every tool, in one folder</h1>
+    <p>PhoneKit is a self-contained KUAL extension. Everything below is plain shell and Python from the standard library &mdash; no compiled code, no package to install, and removing it is deleting the folder. It needs a jailbroken Kindle and KUAL.</p>
+  </div>
+</header>
+
+<main>
+  <section class="feature" id="clock">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>Clock</h2>
+      <p class="lead">A big, readable digital clock that lives on the e-ink screen.</p>
+      <p class="body">PhoneKit adds a full-width clock in 24-hour format by default, or 12-hour when launched with the <code>12</code> argument. It is designed for e-ink: it does a full screen refresh every minute to avoid ghosting and burn-in, and it clears when you press Home.</p>
+      <ul>
+        <li><strong>24-hour default</strong>; pass <code>12</code> for 12-hour format.</li>
+        <li>Full screen refresh every minute to avoid ghosting.</li>
+        <li>Press Home to exit.</li>
+      </ul>
+      <div class="note"><strong>Note:</strong> the minute-by-minute refresh is normal for e-ink and is what keeps the display clean.</div>
+      <a class="back" href="index.html#features">&larr; Back to overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="timer">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>Countdown timer</h2>
+      <p class="lead">A full-screen countdown that flashes the screen when time is up.</p>
+      <p class="body">The Kindle has no speaker, so PhoneKit cannot beep. Instead, when the countdown reaches zero it flashes the whole screen. The default is a 300-second (5 minute) countdown; you can change it by editing the Timer entry in <code>menu.json</code>, for example <code>"params": ["900"]</code> for 15 minutes.</p>
+      <ul>
+        <li>Full-screen countdown display.</li>
+        <li>Flashes the screen when time runs out &mdash; no speaker needed.</li>
+        <li>Default duration editable via <code>menu.json</code>.</li>
+      </ul>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="llm">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>LLM chat</h2>
+      <p class="lead">Chat with any OpenAI-compatible endpoint right on the Kindle.</p>
+      <p class="body">PhoneKit runs a tiny local server plus a web page in the Kindle's built-in browser. It talks to any OpenAI-compatible chat-completions endpoint &mdash; Ollama on the device, llama.cpp, vLLM, OpenAI, or OpenRouter. Set the URL, model, and optional API key in one config file and start chatting from the menu.</p>
+      <ul>
+        <li>Works with any OpenAI-compatible endpoint: Ollama, llama.cpp, vLLM, OpenAI, OpenRouter.</li>
+        <li>Default points at Ollama on the Kindle itself with model <code>qwen2.5:7b-instruct</code>.</li>
+        <li>Set <code>PK_LLM_API_URL</code>, <code>PK_LLM_API_KEY</code>, <code>PK_LLM_MODEL</code>, and an optional system prompt in <code>ext/llm/config.env</code>.</li>
+        <li>Start and stop the server from the LLM menu.</li>
+      </ul>
+      <div class="note"><strong>Note:</strong> chat needs an LLM endpoint, even if that endpoint is on the device. Keep answers short for a fast, readable reply on e-ink.</div>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="xmpp">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>XMPP messenger</h2>
+      <p class="lead">Browser clients, plus an optional on-screen bridge over TLS.</p>
+      <p class="body">The Kindle cannot run Android apps, so PhoneKit opens the Monocles and Cheogram web clients in the browser. An optional on-screen bridge connects directly to your XMPP server over TLS, authenticates with SCRAM-SHA-1 (PLAIN as fallback), and flashes incoming messages on the e-ink screen.</p>
+      <ul>
+        <li>Open Cheogram (<code>https://app.cheogram.com</code>) or Monocles Web (<code>https://chat.monocles.de</code>) in the browser.</li>
+        <li>On-screen bridge connects over TLS and authenticates with SCRAM-SHA-1.</li>
+        <li>Incoming messages are logged and flashed on the screen.</li>
+        <li>One-tap check-in sends status presets ("here", "busy", "ok", "night") to a preset contact.</li>
+      </ul>
+      <div class="note"><strong>Security:</strong> SCRAM-SHA-1 is preferred over PLAIN. Keep TLS verification on and never leave <code>PK_XMPP_NO_VERIFY=1</code> set on a real account. API keys in <code>config.env</code> are plain text.</div>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="reader">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>Read-it-later reader</h2>
+      <p class="lead">Paste a URL, and the Kindle reads it back to you in large text.</p>
+      <p class="body">The reader is a local web app. Paste a URL, the Kindle fetches it, strips the page down to readable text, and renders it large on the e-ink screen. Saved articles live in <code>inbox.json</code> next to the server. If an OpenAI-compatible API is configured, a Summarize button appears for optional LLM summaries.</p>
+      <ul>
+        <li>Fetches and strips a page down to readable text.</li>
+        <li>Renders articles in clean, large-font text.</li>
+        <li>Optional LLM summary when <code>PK_RIL_API_URL</code> is set.</li>
+        <li>Saved articles stored in <code>inbox.json</code>.</li>
+      </ul>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="rss">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>RSS feed reader</h2>
+      <p class="lead">A feed reader that keeps a plain list of URLs.</p>
+      <p class="body">PhoneKit keeps a plain text list of feed URLs, fetches them on demand, caches items, and renders each article as clean, large-font text. Add feeds by editing <code>ext/feed/feeds.txt</code> (one URL per line, lines starting with <code>#</code> are ignored) or from the web page's "Add feed" form. Fetched items are cached in <code>cache.json</code>.</p>
+      <ul>
+        <li>Plain text feed list, one URL per line.</li>
+        <li>Fetches on demand and caches items.</li>
+        <li>Renders each article as clean, large-font text.</li>
+        <li>Per-feed fetch timeout configurable in <code>ext/feed/config.env</code>.</li>
+      </ul>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="notes">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>Notes &amp; todo</h2>
+      <p class="lead">A tiny notes and todo list stored in one plaintext file.</p>
+      <p class="body">Add a note or todo, tick todos done, and delete lines. Everything is stored in one plaintext file &mdash; one line per entry (<code>TODO:</code>, <code>DONE:</code>, or <code>NOTE:</code>) &mdash; so it is easy to edit on a computer, and everything survives a reboot.</p>
+      <ul>
+        <li>One plaintext data file, easy to edit on a computer.</li>
+        <li>Add notes, tick todos done, delete lines.</li>
+        <li>Everything survives a reboot.</li>
+        <li>Data file path configurable in <code>ext/notes/config.env</code>.</li>
+      </ul>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="dashboard">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>Home-lab dashboard</h2>
+      <p class="lead">An at-a-glance dashboard for your home lab.</p>
+      <p class="body">A big clock and date, plus whatever your own JSON endpoint reports &mdash; uptime, disk, temperature. Point <code>PK_DASH_URL</code> at any JSON your own server exposes, for example <code>{"uptime":"3d 4h","disk":{"value":"71%","status":"warn"},"temp":"52C"}</code>. Refresh from the menu, or set up a cron or <code>lipc</code> wake to hit <code>/refresh</code> on a schedule (the e-ink screen and Wi-Fi sleep between updates).</p>
+      <ul>
+        <li>Big clock and date plus your own JSON endpoint data.</li>
+        <li>Refresh from the menu or on a schedule.</li>
+        <li>Label configurable via <code>PK_DASH_NAME</code>.</li>
+      </ul>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+
+  <section class="feature" id="qr">
+    <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+      <h2>QR pairing</h2>
+      <p class="lead">Render any text as a QR code on the e-ink screen.</p>
+      <p class="body">PhoneKit renders any text &mdash; a Wi-Fi join string, a vCard contact, a URL &mdash; as a QR code directly on the e-ink screen using a pure-Python encoder. Point your phone at the screen to pair. No config file is needed; the menu items render a fixed payload, and you can show your own text by editing the <code>params</code> in <code>menu.json</code> or running <code>ext/qr/show_qr.sh</code>.</p>
+      <ul>
+        <li>Pure-Python QR encoder, no external dependency.</li>
+        <li>Render a Wi-Fi join string, vCard, or URL.</li>
+        <li>Point your phone at the screen to pair.</li>
+      </ul>
+      <a class="back" href="index.html#features">&larr; the overview</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
+    <span>PhoneKit &mdash; a focused toolset, not a phone replacement.</span>
+    <span><a href="index.html">Back to home</a> &middot; <a href="https://github.com/Keylessboi/kindle-phonekit" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle=document.getElementById('navToggle');
+    var links=document.getElementById('navLinks');
+    if(toggle&&links){
+      toggle.addEventListener('click',function(){
+        var open=links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded',open?'true':'false');
+      });
+      links.addEventListener('click',function(e){
+        if(e.target.tagName==='A'){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+      });
+    }
+  })();
+</script>
+</body>
+</html>

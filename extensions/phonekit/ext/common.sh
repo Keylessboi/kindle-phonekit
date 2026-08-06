@@ -2,7 +2,7 @@
 # PhoneKit shared helpers. Source this from every script:
 #     . "$(dirname "$0")/common.sh"
 
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:"$PATH"
 
 # --- Screen geometry (pixels) ----------------------------------------------
 SCREEN_W=600

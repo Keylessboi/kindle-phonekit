@@ -11,6 +11,7 @@ case "$_SECS" in
     *[!0-9]*) _SECS=300;;
 esac
 _END=$(( $(date +%s) + _SECS ))
+_LABEL_MSG="${2:-TIMER DONE}"
 
 # "MM:SS" is always 5 characters wide
 _X=$(( (SCREEN_W - 5 * CH_W) / 2 ))
@@ -27,7 +28,8 @@ while [ "$(date +%s)" -lt "$_END" ]; do
 done
 
 eips_clear
-eips_center $((SCREEN_H / 2 - CH_H)) "TIMER DONE"
+eips_center $((SCREEN_H / 2 - CH_H)) "$_LABEL_MSG"
+eips_center $((SCREEN_H / 2 + CH_H)) "was $_SECS seconds"
 eips -f
 sleep 5
 eips_clear

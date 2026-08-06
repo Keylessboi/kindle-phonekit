@@ -8,13 +8,19 @@ Listen mode (default): connect to your account, then log every incoming chat
 message to /tmp/phonekit_xmpp.txt and flash new ones on the e-ink screen.
 
 Send mode: python3 bridge.py send <jid> <message>
+Check-in mode: python3 bridge.py checkin <preset> [jid]
+
+  checkin sends a short, pre-written status message to a contact with one
+  command, perfect for a one-tap KUAL menu entry. The recipient defaults to
+  PK_XMPP_CHECKIN_JID; the preset text is looked up below (or given verbatim).
 
 Configuration via environment variables (see xmpp/config.env):
     PK_XMPP_JID        user@server
     PK_XMPP_PASS       password
-    PK_XMPP_HOST       server host (default: JID domain)
+    PK_XMPP_HOST       host (default: JID domain)
     PK_XMPP_PORT       port (default 5222)
     PK_XMPP_NO_VERIFY  1 to skip TLS certificate checks (self-signed servers)
+    PK_XMPP_CHECKIN_JID  default recipient for the checkin subcommand
 
 Notes:
   * Uses SASL SCRAM-SHA-1 when offered, PLAIN as a fallback.
@@ -59,6 +65,17 @@ NS_TLS = "urn:ietf:params:xml:ns:xmpp-tls"
 NS_SASL = "urn:ietf:params:xml:ns:xmpp-sasl"
 NS_BIND = "urn:ietf:params:xml:ns:xmpp-bind"
 INBOX = os.environ.get("PK_XMPP_INBOX", "/tmp/phonekit_xmpp.txt")
+CHECKIN_JID = os.environ.get("PK_XMPP_CHECKIN_JID", "")
+
+# One-word presets for checkin. A KUAL menu item passes the preset name;
+# each maps to a short, unambiguous status message.
+CHECKINS = {
+    "here": "On the Kindle - reachable",
+    "away": "Stepped away, will reply later",
+    "busy": "Busy right now, will reply soon",
+    "ok": "All good here",
+    "night": "Off for the night, good night",
+}
 
 
 class XMPPError(Exception):
@@ -475,6 +492,9 @@ def main():
     if args and args[0] == "send":
         mode = "send"
         args = args[1:]
+    elif args and args[0] == "checkin":
+        mode = "checkin"
+        args = args[1:]
 
     if not JID or not PASS:
         sys.stderr.write("Set PK_XMPP_JID and PK_XMPP_PASS in xmpp/config.env\n")
@@ -491,6 +511,25 @@ def main():
             client.send_message(args[0], " ".join(args[1:]))
             time.sleep(1.5)  # let the TLS buffer flush before we close
             print("sent")
+            return 0
+        if mode == "checkin":
+            if not args:
+                sys.stderr.write(
+                    "usage: bridge.py checkin <preset|text> [jid]\n"
+                    "presets: %s\n" % ", ".join(sorted(CHECKINS))
+                )
+                return 2
+            preset = args[0]
+            body = CHECKINS.get(preset, " ".join(args))
+            to = args[1] if len(args) > 1 else CHECKIN_JID
+            if not to:
+                sys.stderr.write(
+                    "no recipient: pass a jid or set PK_XMPP_CHECKIN_JID\n"
+                )
+                return 2
+            client.send_message(to, body)
+            time.sleep(1.5)
+            print("checkin sent:", body)
             return 0
         client.send_presence()
         client.listen()

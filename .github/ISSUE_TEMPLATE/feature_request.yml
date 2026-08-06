@@ -1,0 +1,40 @@
+name: Feature request
+description: An idea for a new PhoneKit feature, app, or improvement.
+title: "[feature] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        PhoneKit is intentionally small and dependency-free. Ideas that keep it
+        that way are most likely to land.
+  - type: text
+    attributes:
+      label: What should it do?
+      description: One or two sentences on the behavior you want.
+    validations:
+      required: true
+  - type: text
+    attributes:
+      label: Why is it useful?
+      description: How does this help on an e-ink screen without adding bloat?
+    validations:
+      required: false
+  - type: dropdown
+    attributes:
+      label: Scope
+      options:
+        - New app / extension
+        - New menu entry
+        - Improvement to an existing app
+        - New GitHub workflow / repo feature
+        - Documentation
+        - Other
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Notes
+      description: Anything else — mockups, rough sketches, links.
+    validations:
+      required: false

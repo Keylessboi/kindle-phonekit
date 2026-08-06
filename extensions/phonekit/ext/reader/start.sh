@@ -1,5 +1,5 @@
 #!/bin/sh
-# PhoneKit LLM — start the local chat server, then open it in the browser.
+# PhoneKit read-it-later — start the local server, then open it in the browser.
 
 . "$(dirname "$0")/../common.sh"
 
@@ -15,18 +15,18 @@ _PY=$(find_python3) || {
 if [ -f "$_DIR/config.env" ]; then
     . "$_DIR/config.env"
 fi
-export PK_LLM_API_URL PK_LLM_API_KEY PK_LLM_MODEL PK_LLM_SYSTEM PK_LLM_PORT
+export PK_RIL_PORT PK_RIL_API_URL PK_RIL_API_KEY PK_RIL_MODEL
 
 # Restart the server cleanly
-pkill -f "llm_server.py" 2>/dev/null
+pkill -f "reader_server.py" 2>/dev/null
 sleep 1
 
 cd "$_DIR" || { echo "cannot cd to $_DIR" >&2; exit 1; }
-nohup "$_PY" llm_server.py > /tmp/phonekit_llm.log 2>&1 &
+nohup "$_PY" reader_server.py > /tmp/phonekit_reader.log 2>&1 &
 sleep 2
 
-_PORT="${PK_LLM_PORT:-8080}"
-eips_center 20 "Opening LLM chat..."
+_PORT="${PK_RIL_PORT:-8081}"
+eips_center 20 "Opening read-it-later..."
 open_url "http://127.0.0.1:$_PORT"
 sleep 2
 eips_clear

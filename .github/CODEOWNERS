@@ -1,0 +1,15 @@
+# Global: owner of last resort
+*       @Keylessboi
+
+# Core extension + config
+/extensions/phonekit/menu.json         @Keylessboi
+/extensions/phonekit/config.xml        @Keylessboi
+
+# Test suite touches everything; keep tests owned with the code they cover
+/tests/                               @Keylessboi
+
+# Marketing content is co-owned so claims stay grounded in the repo
+/marketing/                           @Keylessboi
+
+# GitHub tooling
+/.github/workflows/                   @Keylessboi

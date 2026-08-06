@@ -1,0 +1,37 @@
+# Path-based PR labeling. See https://github.com/actions/labeler.
+
+extension:
+  - extensions/phonekit/ext/**/*
+
+dashboard:
+  - extensions/phonekit/ext/dashboard/*
+
+"read-it-later":
+  - extensions/phonekit/ext/reader/*
+
+"rss-reader":
+  - extensions/phonekit/ext/feed/*
+
+notes-todo:
+  - extensions/phonekit/ext/notes/*
+
+qr:
+  - extensions/phonekit/ext/qr/*
+
+xmpp:
+  - extensions/phonekit/ext/xmpp/*
+
+llm:
+  - extensions/phonekit/ext/llm/*
+  - extensions/phonekit/ext/weblinks.sh
+
+menu:
+  - extensions/phonekit/menu.json
+
+tests:
+  - tests/*
+
+documentation:
+  - README.md
+  - docs/**/*
+  - marketing/**/*

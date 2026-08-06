@@ -28,6 +28,27 @@ with SCRAM-SHA-1, and flashes incoming messages on the e-ink screen.
 **AI Web Apps** – quick jump links to Open WebUI, ChatGPT, Claude, and Gemini in
 the browser.
 
+**Reader** – read-it-later: paste a URL, the Kindle fetches it, strips the page
+down to readable text, and renders it large on the e-ink screen. Optional
+LLM summary if an API is configured.
+
+**RSS Feeds** – a feed reader. It keeps a plain list of feed URLs, fetches them
+on demand, caches items, and renders each article as clean, large-font text.
+
+**Notes & Todo** – a tiny notes/todo list stored in one plaintext file. Add a
+note or todo, tick todos done, delete lines; everything survives a reboot.
+
+**Dashboard** – an at-a-glance home-lab dashboard: a big clock and date plus
+whatever your own JSON endpoint reports (uptime, disk, temperature…). Refresh
+it from the menu, or on a schedule.
+
+**QR Pairing** – renders any text (Wi-Fi join string, vCard contact, URL) as a
+QR code directly on the e-ink screen, using a pure-Python encoder. Point your
+phone at the screen to pair.
+
+**XMPP Check-in** – one-tap status messages ("here", "busy", "ok", "night")
+sent through the XMPP bridge to a preset contact.
+
 Everything is plain shell + Python from the Python standard library only. There
 is no compiled code and no external dependency to install.
 
@@ -135,6 +156,66 @@ The default points at Ollama on the Kindle itself:
   "XMPP → Start bridge". Incoming messages are logged to `/tmp/phonekit_xmpp.txt`
   and flashed on the screen. SCRAM-SHA-1 is used when the server offers it;
   PLAIN is the fallback. Stop it from the menu when done.
+- **Check-in:** set `PK_XMPP_CHECKIN_JID` to the contact who should receive
+  your one-tap status presets ("XMPP Check-in" menu).
+
+### 3.3 Reader (`ext/reader/config.env`)
+
+| Variable          | Meaning                                               |
+|-------------------|-------------------------------------------------------|
+| `PK_RIL_PORT`     | Local server port (default 8081)                      |
+| `PK_RIL_API_URL`  | Optional OpenAI-compatible API for summaries (`""` disables) |
+| `PK_RIL_API_KEY`  | API key for summaries                                 |
+| `PK_RIL_MODEL`    | Model name for summaries                              |
+
+Saved articles live in `inbox.json` next to the server. The Summarize button
+appears only when `PK_RIL_API_URL` is set.
+
+### 3.4 RSS feeds (`ext/feed/config.env`)
+
+| Variable           | Meaning                                |
+|--------------------|----------------------------------------|
+| `PK_FEED_PORT`     | Local server port (default 8082)       |
+| `PK_FEED_TIMEOUT`  | Per-feed fetch timeout in seconds (default 20) |
+
+The feed list is a plain text file, one URL per line
+(`ext/feed/feeds.txt`; lines starting with `#` are ignored). Add feeds by
+editing that file or from the web page's "Add feed" form. Fetched items are
+cached in `cache.json`.
+
+### 3.5 Notes & Todo (`ext/notes/config.env`)
+
+| Variable          | Meaning                                              |
+|-------------------|------------------------------------------------------|
+| `PK_NOTES_PORT`   | Local server port (default 8083)                     |
+| `PK_NOTES_FILE`   | Data file (default `/mnt/us/phonekit/notes.txt`)     |
+
+The data file is one line per entry (`TODO:`, `DONE:`, or `NOTE:`), so it is
+easy to edit on a computer. If the configured path is not writable at runtime,
+the server falls back to a local `notes.txt` next to the script and logs which
+path it used.
+
+### 3.6 Dashboard (`ext/dashboard/config.env`)
+
+| Variable          | Meaning                                               |
+|-------------------|-------------------------------------------------------|
+| `PK_DASH_PORT`    | Local server port (default 8084)                      |
+| `PK_DASH_URL`     | External JSON endpoint to display (`""` = clock only) |
+| `PK_DASH_NAME`    | Dashboard label shown on screen (default `homelab`)   |
+
+`PK_DASH_URL` may point at any JSON your own server exposes, e.g.
+`{"uptime":"3d 4h","disk":{"value":"71%","status":"warn"},"temp":"52C"}`.
+Refresh from the menu, or set up a cron/`lipc` wake to hit `/refresh` on a
+schedule (the e-ink screen and Wi-Fi sleep between updates).
+
+### 3.7 QR pairing (`ext/qr/`)
+
+No config file needed. The `QR Pairing` menu items render a fixed payload; to
+show your own text, edit the `params` of those entries in `menu.json` or run:
+
+```
+ext/qr/show_qr.sh "WIFI:T:WPA;S:YourNet;P:password;;"
+```
 
 ---
 
@@ -150,6 +231,18 @@ Open **KUAL → PhoneKit**:
 - **LLM → Start** – starts the server and opens the chat page in the browser.
   **LLM → Stop** shuts it down.
 - **XMPP →** Open client / Start bridge / Stop bridge.
+- **Reader → Start Reader** – opens the read-it-later home page; paste a URL to
+  save and read it. **Stop Server** shuts it down.
+- **RSS Feeds → Start Feeds** – opens the feed list; refresh to fetch, then open
+  any article. **Stop Server** shuts it down.
+- **Notes & Todo → Start Notes** – opens the notes/todo page. **Stop Server**
+  shuts it down.
+- **Dashboard → Start Dashboard** – opens the dashboard. **Stop Server** shuts
+  it down.
+- **QR Pairing** – shows a Wi-Fi join string or a contact vCard as a QR code on
+  the e-ink screen for the phone to scan.
+- **XMPP Check-in** – sends a one-tap status ("Here", "Busy", "Ok", "Night")
+  to `PK_XMPP_CHECKIN_JID`.
 - **AI Web Apps** – ChatGPT, Claude, Gemini, Open WebUI.
 
 ---

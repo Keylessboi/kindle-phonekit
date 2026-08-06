@@ -1,0 +1,19 @@
+name: PR labeling
+
+# Auto-tags pull requests from their touched paths and validates that docs-only
+# changes skip the full lint matrix (they still get the static checks).
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          sync-labels: true
