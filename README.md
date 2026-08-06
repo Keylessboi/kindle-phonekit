@@ -19,10 +19,10 @@
   </a>
 </p>
 
-Turn a jailbroken Kindle into a pocket assistant. A self-contained KUAL
-extension that adds phone-like functions to the e-ink screen:
+Turn a jailbroken Kindle into a pocket assistant. This self-contained KUAL
+extension adds phone-like functions to the e-ink screen:
 
-**Clock** – a big, readable 24-hour (or 12-hour) digital clock that avoids
+**Clock** – a big, readable 24-hour (or 12-hour) digital clock. It avoids
 burn-in by doing a full screen refresh every minute and clearing on Home.
 
 **Timer** – a full-screen countdown timer. The Kindle has no speaker, so when
@@ -34,14 +34,14 @@ browser. Ollama, llama.cpp, vLLM, OpenAI, or OpenRouter all work; just set the
 URL, model, and optional API key in one config file.
 
 **XMPP messenger** – the Kindle cannot run Android apps, so the Monocles and
-Cheogram clients are opened in the browser (they have web ports). An optional
+Cheogram clients open in the browser (they have web ports). An optional
 on-screen bridge connects directly to your XMPP server over TLS, authenticates
 with SCRAM-SHA-1, and flashes incoming messages on the e-ink screen.
 
 **AI Web Apps** – quick jump links to Open WebUI, ChatGPT, Claude, and Gemini in
 the browser.
 
-**Reader** – read-it-later: paste a URL, the Kindle fetches it, strips the page
+**Reader** – read-it-later. Paste a URL, the Kindle fetches it, strips the page
 down to readable text, and renders it large on the e-ink screen. Optional
 LLM summary if an API is configured.
 
@@ -51,7 +51,7 @@ on demand, caches items, and renders each article as clean, large-font text.
 **Notes & Todo** – a tiny notes/todo list stored in one plaintext file. Add a
 note or todo, tick todos done, delete lines; everything survives a reboot.
 
-**Dashboard** – an at-a-glance home-lab dashboard: a big clock and date plus
+**Dashboard** – an at-a-glance home-lab dashboard. A big clock and date plus
 whatever your own JSON endpoint reports (uptime, disk, temperature…). Refresh
 it from the menu, or on a schedule.
 
@@ -119,11 +119,11 @@ cp -r extensions/phonekit /Volumes/Kindle/extensions/phonekit   # macOS
 cp -r extensions/phonekit /media/Kindle/extensions/phonekit     # Linux
 ```
 
-(Rename the drive mount to yours if needed.) Eject the USB drive. After the
+(Rename the mount to yours if needed.) Eject the USB drive. After the
 Kindle re-mounts it, open KUAL and you will see the **PhoneKit** menu.
 
 It is safe to edit the `*.sh` files with a plain text editor on your computer.
-Use Unix line endings (LF), not Windows CRLF — the Kindle shell rejects CRLF.
+Use Unix line endings (LF), not Windows CRLF. The Kindle shell rejects CRLF.
 
 ---
 
@@ -216,14 +216,14 @@ path it used.
 | `PK_DASH_URL`     | External JSON endpoint to display (`""` = clock only) |
 | `PK_DASH_NAME`    | Dashboard label shown on screen (default `homelab`)   |
 
-`PK_DASH_URL` may point at any JSON your own server exposes, e.g.
+`PK_DASH_URL` may point to any JSON your own server exposes, e.g.
 `{"uptime":"3d 4h","disk":{"value":"71%","status":"warn"},"temp":"52C"}`.
 Refresh from the menu, or set up a cron/`lipc` wake to hit `/refresh` on a
 schedule (the e-ink screen and Wi-Fi sleep between updates).
 
 ### 3.7 QR pairing (`ext/qr/`)
 
-No config file needed. The `QR Pairing` menu items render a fixed payload; to
+No config file is needed. The `QR Pairing` menu items render a fixed payload; to
 show your own text, edit the `params` of those entries in `menu.json` or run:
 
 ```
@@ -236,8 +236,8 @@ ext/qr/show_qr.sh "WIFI:T:WPA;S:YourNet;P:password;;"
 
 Open **KUAL → PhoneKit**:
 
-- **Clock** – full-width clock. Argument `12` gives 12-hour format. Press Home
-  to exit.
+- **Clock** – full-width clock. Argument `12` gives the 12-hour format. Press
+  Home to exit.
 - **Timer** – starts a 300-second (5 minute) countdown. To change the default,
   edit `menu.json`: the Timer entry carries a parameter, e.g.
   `"params": ["900"]` for 15 minutes.

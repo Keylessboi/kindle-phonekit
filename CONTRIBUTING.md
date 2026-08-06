@@ -52,9 +52,9 @@ GitHub Actions runs the matrix (Python 3.9–3.14) on every PR. The CI job named
 
 ## Where to look
 
-- `extensions/phonekit/ext/` — the apps and scripts.
-- `tests/` — the scenario-driven suite (see `tests/README.md`).
-- `docs/research/` — product viability notes (lightly maintained).
-- `marketing/` — grounded campaign copy; keep claims in sync with the code.
+- `extensions/phonekit/ext/`: the apps and scripts.
+- `tests/`: the scenario-driven suite (see `tests/README.md`).
+- `docs/research/`: product viability notes (lightly maintained).
+- `marketing/`: grounded campaign copy; keep claims in sync with the code.
 
 Thanks for keeping the calm device calm.

@@ -35,6 +35,6 @@ body:
   - type: textarea
     attributes:
       label: Notes
-      description: Anything else — mockups, rough sketches, links.
+      description: Anything else, like mockups, rough sketches, or links.
     validations:
       required: false

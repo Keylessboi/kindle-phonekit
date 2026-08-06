@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Every PhoneKit feature in detail: clock, countdown timer, LLM chat, XMPP messenger, read-it-later reader, RSS feeds, notes and todo, home-lab dashboard, and QR pairing.">
-<title>Features — PhoneKit</title>
+<title>Features: PhoneKit</title>
 <style>
   :root{
     --bg:#14130f;
@@ -93,9 +93,9 @@
 
 <header class="page-head">
   <div class="wrap" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
-    <div class="crumb">PhoneKit &mdash; Feature details</div>
+    <div class="crumb">PhoneKit: Feature details</div>
     <h1>Every tool, in one folder</h1>
-    <p>PhoneKit is a self-contained KUAL extension. Everything below is plain shell and Python from the standard library &mdash; no compiled code, no package to install, and removing it is deleting the folder. It needs a jailbroken Kindle and KUAL.</p>
+    <p>PhoneKit is a self-contained KUAL extension. Everything below is plain shell and Python from the standard library. No compiled code, no package to install, and removing it is deleting the folder. It needs a jailbroken Kindle and KUAL.</p>
   </div>
 </header>
 
@@ -122,7 +122,7 @@
       <p class="body">The Kindle has no speaker, so PhoneKit cannot beep. Instead, when the countdown reaches zero it flashes the whole screen. The default is a 300-second (5 minute) countdown; you can change it by editing the Timer entry in <code>menu.json</code>, for example <code>"params": ["900"]</code> for 15 minutes.</p>
       <ul>
         <li>Full-screen countdown display.</li>
-        <li>Flashes the screen when time runs out &mdash; no speaker needed.</li>
+        <li>Flashes the screen when time runs out. No speaker needed.</li>
         <li>Default duration editable via <code>menu.json</code>.</li>
       </ul>
       <a class="back" href="index.html#features">&larr; the overview</a>
@@ -133,7 +133,7 @@
     <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
       <h2>LLM chat</h2>
       <p class="lead">Chat with any OpenAI-compatible endpoint right on the Kindle.</p>
-      <p class="body">PhoneKit runs a tiny local server plus a web page in the Kindle's built-in browser. It talks to any OpenAI-compatible chat-completions endpoint &mdash; Ollama on the device, llama.cpp, vLLM, OpenAI, or OpenRouter. Set the URL, model, and optional API key in one config file and start chatting from the menu.</p>
+      <p class="body">PhoneKit runs a tiny local server plus a web page in the Kindle's built-in browser. It talks to any OpenAI-compatible chat-completions endpoint. Ollama on the device, llama.cpp, vLLM, OpenAI, or OpenRouter. Set the URL, model, and optional API key in one config file and start chatting from the menu.</p>
       <ul>
         <li>Works with any OpenAI-compatible endpoint: Ollama, llama.cpp, vLLM, OpenAI, OpenRouter.</li>
         <li>Default points at Ollama on the Kindle itself with model <code>qwen2.5:7b-instruct</code>.</li>
@@ -195,7 +195,7 @@
     <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
       <h2>Notes &amp; todo</h2>
       <p class="lead">A tiny notes and todo list stored in one plaintext file.</p>
-      <p class="body">Add a note or todo, tick todos done, and delete lines. Everything is stored in one plaintext file &mdash; one line per entry (<code>TODO:</code>, <code>DONE:</code>, or <code>NOTE:</code>) &mdash; so it is easy to edit on a computer, and everything survives a reboot.</p>
+      <p class="body">Add a note or todo, tick todos done, and delete lines. Everything is stored in one plaintext file, one line per entry (<code>TODO:</code>, <code>DONE:</code>, or <code>NOTE:</code>), so it is easy to edit on a computer, and everything survives a reboot.</p>
       <ul>
         <li>One plaintext data file, easy to edit on a computer.</li>
         <li>Add notes, tick todos done, delete lines.</li>
@@ -210,7 +210,7 @@
     <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
       <h2>Home-lab dashboard</h2>
       <p class="lead">An at-a-glance dashboard for your home lab.</p>
-      <p class="body">A big clock and date, plus whatever your own JSON endpoint reports &mdash; uptime, disk, temperature. Point <code>PK_DASH_URL</code> at any JSON your own server exposes, for example <code>{"uptime":"3d 4h","disk":{"value":"71%","status":"warn"},"temp":"52C"}</code>. Refresh from the menu, or set up a cron or <code>lipc</code> wake to hit <code>/refresh</code> on a schedule (the e-ink screen and Wi-Fi sleep between updates).</p>
+      <p class="body">A big clock and date, plus whatever your own JSON endpoint reports, such as uptime, disk, or temperature. Point <code>PK_DASH_URL</code> at any JSON your own server exposes, for example <code>{"uptime":"3d 4h","disk":{"value":"71%","status":"warn"},"temp":"52C"}</code>. Refresh from the menu, or set up a cron or <code>lipc</code> wake to hit <code>/refresh</code> on a schedule (the e-ink screen and Wi-Fi sleep between updates).</p>
       <ul>
         <li>Big clock and date plus your own JSON endpoint data.</li>
         <li>Refresh from the menu or on a schedule.</li>
@@ -224,7 +224,7 @@
     <div class="wrap feature-inner" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
       <h2>QR pairing</h2>
       <p class="lead">Render any text as a QR code on the e-ink screen.</p>
-      <p class="body">PhoneKit renders any text &mdash; a Wi-Fi join string, a vCard contact, a URL &mdash; as a QR code directly on the e-ink screen using a pure-Python encoder. Point your phone at the screen to pair. No config file is needed; the menu items render a fixed payload, and you can show your own text by editing the <code>params</code> in <code>menu.json</code> or running <code>ext/qr/show_qr.sh</code>.</p>
+      <p class="body">PhoneKit renders any text, such as a Wi-Fi join string, a vCard contact, or a URL, as a QR code directly on the e-ink screen using a pure-Python encoder. Point your phone at the screen to pair. No config file is needed; the menu items render a fixed payload, and you can show your own text by editing the <code>params</code> in <code>menu.json</code> or running <code>ext/qr/show_qr.sh</code>.</p>
       <ul>
         <li>Pure-Python QR encoder, no external dependency.</li>
         <li>Render a Wi-Fi join string, vCard, or URL.</li>
@@ -237,7 +237,7 @@
 
 <footer>
   <div class="wrap foot" style="max-width:var(--maxw);margin:0 auto;padding:0 24px">
-    <span>PhoneKit &mdash; a focused toolset, not a phone replacement.</span>
+    <span>PhoneKit: a focused toolset, not a phone replacement.</span>
     <span><a href="index.html">Back to home</a> &middot; <a href="https://github.com/Keylessboi/kindle-phonekit" target="_blank" rel="noopener">GitHub</a></span>
   </div>
 </footer>
