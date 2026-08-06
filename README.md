@@ -6,6 +6,19 @@
        width="100%">
 </p>
 
+<p align="center">
+  <a href="https://github.com/Keylessboi/kindle-phonekit/actions/workflows/ci.yml">
+    <img alt="CI"
+         src="https://github.com/Keylessboi/kindle-phonekit/actions/workflows/ci.yml/badge.svg">
+  </a>
+  <img alt="License: GPL-3.0"
+       src="https://img.shields.io/badge/license-GPL--3.0-blue.svg">
+  <a href="https://keylessboi.github.io/kindle-phonekit/">
+    <img alt="GitHub Pages"
+         src="https://img.shields.io/badge/website-github--pages-success">
+  </a>
+</p>
+
 Turn a jailbroken Kindle into a pocket assistant. A self-contained KUAL
 extension that adds phone-like functions to the e-ink screen:
 
