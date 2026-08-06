@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page not found — PhoneKit</title>
+<style>
+  :root{
+    --bg:#14130f;
+    --surface:#211e17;
+    --border:#3a342a;
+    --ink:#f5f2ec;
+    --muted:#b3ac9d;
+    --amber:#e8a95b;
+    --amber-bright:#ffd691;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;-webkit-font-smoothing:antialiased}
+  .mark{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--amber-bright),var(--amber));display:grid;place-items:center;color:#1a150c;font-weight:800;font-size:26px;margin:0 auto 28px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,8vw,4.5rem);line-height:1;margin-bottom:18px}
+  h1 span{color:var(--amber-bright)}
+  p{color:var(--muted);max-width:46ch;margin:0 auto 30px;font-size:1.05rem}
+  .actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .btn{display:inline-block;font-weight:700;padding:12px 20px;border-radius:10px}
+  .btn-primary{background:var(--amber);color:#241a0c}
+  .btn-primary:hover{background:var(--amber-bright);text-decoration:none}
+  .btn-ghost{border:1px solid var(--border);color:var(--ink)}
+  .btn-ghost:hover{background:var(--bg);text-decoration:none}
+  .foot{margin-top:44px;color:#8d8678;font-size:.85rem}
+</style>
+</head>
+<body>
+  <div class="mark">P</div>
+  <h1>404 <span>&middot;</span> Page not found</h1>
+  <p>This page drifted off the e-ink screen. The calm Kindle is still useful &mdash; head back to the PhoneKit home page.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="index.html">Back to home</a>
+    <a class="btn btn-ghost" href="features.html">Feature details</a>
+  </div>
+  <div class="foot">PhoneKit &mdash; your calm Kindle can also be useful.</div>
+</body>
+</html>
