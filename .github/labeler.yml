@@ -1,37 +1,50 @@
 # Path-based PR labeling. See https://github.com/actions/labeler.
 
 extension:
-  - extensions/phonekit/ext/**/*
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/**/*"]
 
 dashboard:
-  - extensions/phonekit/ext/dashboard/*
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/dashboard/*"]
 
-"read-it-later":
-  - extensions/phonekit/ext/reader/*
+read-it-later:
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/reader/*"]
 
-"rss-reader":
-  - extensions/phonekit/ext/feed/*
+rss-reader:
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/feed/*"]
 
 notes-todo:
-  - extensions/phonekit/ext/notes/*
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/notes/*"]
 
 qr:
-  - extensions/phonekit/ext/qr/*
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/qr/*"]
 
 xmpp:
-  - extensions/phonekit/ext/xmpp/*
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/ext/xmpp/*"]
 
 llm:
-  - extensions/phonekit/ext/llm/*
-  - extensions/phonekit/ext/weblinks.sh
+  - changed-files:
+      - any-glob-to-any-file:
+          - "extensions/phonekit/ext/llm/*"
+          - "extensions/phonekit/ext/weblinks.sh"
 
 menu:
-  - extensions/phonekit/menu.json
+  - changed-files:
+      - any-glob-to-any-file: ["extensions/phonekit/menu.json"]
 
 tests:
-  - tests/*
+  - changed-files:
+      - any-glob-to-any-file: ["tests/*"]
 
 documentation:
-  - README.md
-  - docs/**/*
-  - marketing/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - "README.md"
+          - "docs/**/*"
+          - "marketing/**/*"
