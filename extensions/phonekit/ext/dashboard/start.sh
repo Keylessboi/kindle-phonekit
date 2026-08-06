@@ -31,7 +31,7 @@ export PK_DASH_PORT PK_DASH_URL PK_DASH_NAME
 pkill -f "dashboard_server.py" 2>/dev/null
 sleep 1
 
-cd "$_DIR"
+cd "$_DIR" || { echo "cannot cd to $_DIR" >&2; exit 1; }
 nohup "$_PY" dashboard_server.py > /tmp/phonekit_dash.log 2>&1 &
 sleep 2
 

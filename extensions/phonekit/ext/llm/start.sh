@@ -21,7 +21,7 @@ export PK_LLM_API_URL PK_LLM_API_KEY PK_LLM_MODEL PK_LLM_SYSTEM PK_LLM_PORT
 pkill -f "llm_server.py" 2>/dev/null
 sleep 1
 
-cd "$_DIR"
+cd "$_DIR" || { echo "cannot cd to $_DIR" >&2; exit 1; }
 nohup "$_PY" llm_server.py > /tmp/phonekit_llm.log 2>&1 &
 sleep 2
 

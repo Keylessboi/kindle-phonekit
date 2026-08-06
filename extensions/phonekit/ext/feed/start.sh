@@ -21,7 +21,7 @@ export PK_FEED_PORT PK_FEED_TIMEOUT PK_FEED_FEEDS PK_FEED_CACHE
 pkill -f "feed_server.py" 2>/dev/null
 sleep 1
 
-cd "$_DIR"
+cd "$_DIR" || { echo "cannot cd to $_DIR" >&2; exit 1; }
 nohup "$_PY" feed_server.py > /tmp/phonekit_feed.log 2>&1 &
 sleep 2
 

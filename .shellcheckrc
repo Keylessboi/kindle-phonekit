@@ -1,0 +1,12 @@
+# PhoneKit shellcheck configuration
+#
+# These exclusions cover intentional patterns in this project:
+#   - SC1091: shellcheck cannot follow helper files that are sourced at runtime
+#     via "$(dirname "$0")", and the on-device eips/lipc programs are not on
+#     the runner's PATH. sh -n (run in CI) already validates script syntax.
+#   - SC2034: SCREEN_H / CH_H are exported for other scripts that source this
+#     file; shellcheck only sees this file in isolation and reports them
+#     unused.
+#   - SC2086 would normally flag the config.env exports, but each server's
+#     launcher exports the variables used by its own script.
+disable=SC1091,SC2034

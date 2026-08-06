@@ -21,7 +21,7 @@ export PK_RIL_PORT PK_RIL_API_URL PK_RIL_API_KEY PK_RIL_MODEL
 pkill -f "reader_server.py" 2>/dev/null
 sleep 1
 
-cd "$_DIR"
+cd "$_DIR" || { echo "cannot cd to $_DIR" >&2; exit 1; }
 nohup "$_PY" reader_server.py > /tmp/phonekit_reader.log 2>&1 &
 sleep 2
 
